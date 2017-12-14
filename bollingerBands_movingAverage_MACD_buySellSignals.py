@@ -17,7 +17,7 @@ def get_data(symbol, dates):
     """Read in daily price(adjusted close) of asset from CSV files for a given set of dates."""
     df = pd.DataFrame(index=dates)
     df_temp = pd.read_csv(symbol_to_path(symbol), index_col='Date', parse_dates=True, usecols=['Date', 'Adj Close'], na_values=['nan'])# Read in entire data file.
-    df = df.join(df_temp, how='inner') # Merge data-frames, setting specified data range as index.
+    df = df.join(df_temp, how='inner')# Merge data-frames, setting specified data range as index.
     df['Adj Close'].fillna(method='ffill', inplace=True)# Make sure data is nice and clean with no missing values.
     return df
 
@@ -101,7 +101,7 @@ def test_run():
             data['Sell'].iloc[i] = 0
             data['Gains'].iloc[i] = -(data['Adj Close'].iloc[i] - data['Adj Close'].iloc[i-1])
 
-    total_gains = data['Gains'].sum()
+    total_gains = (data['Gains'].sum())
     plot_BB_and_RM_and_MACD(data, '{} Technical Analysis'.format(symbol))
 
 if __name__ == "__main__":
