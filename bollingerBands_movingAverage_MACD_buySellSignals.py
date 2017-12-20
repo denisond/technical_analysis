@@ -103,8 +103,6 @@ def test_run():
 
     total_gains = (data['Gains'].sum())
     plot_BB_and_RM_and_MACD(data, '{} Technical Analysis'.format(symbol))
-    print(data['Adj Close'].iloc[-1]-84.4)
-
 
 if __name__ == "__main__":
     test_run()
